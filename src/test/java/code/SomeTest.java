@@ -39,6 +39,7 @@ class SomeTest {
       Files.createFile(origin);
       walk.filter(Files::isRegularFile)
         .filter(e -> !e.getFileName().toString().contains("026"))
+        .filter(e -> !e.getFileName().toString().contains("402"))
         .sorted()
         .limit(up)
         .skip(down)
@@ -64,8 +65,8 @@ class SomeTest {
         .filter(Files::isRegularFile)
         .map(e -> e.getFileName().toString().split("\\.")[0])
         .sorted()
-        .skip(18)
-        .limit(20)
+        .skip(442)
+//        .limit(20)
         .forEach(this::translate);
 
     }
@@ -73,7 +74,7 @@ class SomeTest {
 
   @Test
   void translateOne() {
-    translate("352");
+    translate("371");
   }
 
   @SneakyThrows
@@ -92,8 +93,8 @@ class SomeTest {
               No markdown or stylistic formatting—simply return the draft English text with title.
           """ +
         "!!! ADDITIONAL DATA: The draft is around 150 lines, Raven is a woman, Erwin is a woman, Misha is a woman. " +
-        "DO NOT CONFUSE THE MAIN CHARACTER (Man) FOR THEM" +
-        "The term 'demon' etc translates to 'Evil Spirit' !!!" +
+        "DO NOT CONFUSE THE MAIN CHARACTER (Man) FOR THEM. " +
+        "The term '악령 (aknyeong)' translates to 'Evil Spirit' !!!" +
         "!!! DRAFT: [[[[%s]]] !!!. " +
         "!!! CONTENT FOR CONTEXT so that you understand better: [[[%s]]] !!!"
     ).formatted(Files.readString(Path.of("_scraped/%s.txt".formatted(chapter))),
