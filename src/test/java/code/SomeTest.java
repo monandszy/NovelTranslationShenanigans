@@ -7,7 +7,6 @@ import code.model.request.Request;
 import code.model.request.SafetySetting;
 import code.model.response.Response;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.internal.function.numeric.Max;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,10 +30,6 @@ class SomeTest {
   private WebClient client;
   private ObjectMapper mapper;
 
-  private static final int THREAD_COUNT = 4;
-  private static final int REQUEST_DELAY_MS = 1000;
-  private final Object lock = new Object();
-
   @Test
   @SneakyThrows
   void combine(int up, int down) {
@@ -47,9 +42,6 @@ class SomeTest {
         .sorted()
         .limit(up)
         .skip(down)
-//        .peek(x1 -> System.out.println("rrrrrrrrrrrrrr" + x1))
-//        .count();
-//      System.out.println(count);
         .forEach(path -> {
           try {
             System.out.println(path);
@@ -68,7 +60,6 @@ class SomeTest {
   @SneakyThrows
   void load() {
     try (Stream<Path> walk = Files.walk(Path.of("_scraped"));) {
-//      List<Integer> chapters =
       walk
         .filter(Files::isRegularFile)
         .map(e -> e.getFileName().toString().split("\\.")[0])
@@ -76,38 +67,12 @@ class SomeTest {
 //        .skip(3)
         .limit(20)
         .forEach(this::translate);
-//        .toList();
 
-//      ExecutorService executor = Executors.newFixedThreadPool(THREAD_COUNT);
-//      int batchSize = (int) Math.ceil((double) chapters.size() / THREAD_COUNT);
-//      for (int i = 0; i < chapters.size(); i += batchSize) {
-//        int end = Math.min(i + batchSize, chapters.size());
-//        List<Integer> batch = chapters.subList(i, end);
-
-//        executor.submit(() -> {
-//          for (Integer chapter : batch) {
-//              System.out.println("SLEEPING");
-//            synchronized (lock) {
-//              try {
-//                Thread.sleep(REQUEST_DELAY_MS); // Sleep between requests
-//              } catch (InterruptedException ex) {
-//                Thread.currentThread().interrupt(); // Restore interrupted status
-//                System.err.println("Thread was interrupted during sleep: " + ex.getMessage());
-//              }
-//            }
-//            translate(chapter);
-//          }
-//        });
-//      }
-//        executor.shutdown();
-//      while (!executor.isTerminated()) {
-//        // Wait for all tasks to complete
-//      }
     }
   }
 
   @Test
-  void test() {
+  void translateOne() {
     translate("343");
   }
 

@@ -56,10 +56,11 @@ public class WebConfig implements WebMvcConfigurer {
         c.defaultCodecs().maxInMemorySize(size);
       }).build();
 
+    String API_URL = "https://generativelanguage.googleapis.com/";
     return WebClient.builder()
       .exchangeStrategies(exchangeServices)
       .clientConnector(new ReactorClientHttpConnector(httpClient))
-      .baseUrl("https://generativelanguage.googleapis.com/")
+      .baseUrl(API_URL)
       .defaultHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0")
       .defaultHeader(HttpHeaders.ACCEPT, "application/json;charset=UTF-8")
       .filter((request, next) -> {
