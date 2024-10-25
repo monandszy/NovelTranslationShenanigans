@@ -65,7 +65,7 @@ class SomeTest {
         .filter(Files::isRegularFile)
         .map(e -> e.getFileName().toString().split("\\.")[0])
         .sorted()
-        .skip(442)
+        .skip(367)
 //        .limit(20)
         .forEach(this::translate);
 
@@ -74,7 +74,7 @@ class SomeTest {
 
   @Test
   void translateOne() {
-    translate("371");
+    translate("367");
   }
 
   @SneakyThrows
@@ -92,7 +92,7 @@ class SomeTest {
               Convert sentences to past tense to give the narrative a story-like, polished feel, except for descriptions.
               No markdown or stylistic formatting—simply return the draft English text with title.
           """ +
-        "!!! ADDITIONAL DATA: The draft is around 150 lines, Raven is a woman, Erwin is a woman, Misha is a woman. " +
+        "!!! ADDITIONAL DATA: The draft is around 150 lines, Raven is a woman, Erwin is a woman, Misha is a woman. Ainar is a woman " +
         "DO NOT CONFUSE THE MAIN CHARACTER (Man) FOR THEM. " +
         "The term '악령 (aknyeong)' translates to 'Evil Spirit' !!!" +
         "!!! DRAFT: [[[[%s]]] !!!. " +
