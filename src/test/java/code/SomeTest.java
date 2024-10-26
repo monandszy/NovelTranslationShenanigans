@@ -74,7 +74,7 @@ class SomeTest {
 
   @Test
   void translateOne() {
-    translate("367");
+    translate("397");
   }
 
   @SneakyThrows
@@ -93,7 +93,7 @@ class SomeTest {
               No markdown or stylistic formatting—simply return the draft English text with title.
           """ +
         "!!! ADDITIONAL DATA: The draft is around 150 lines, Raven is a woman, Erwin is a woman, Misha is a woman. Ainar is a woman " +
-        "DO NOT CONFUSE THE MAIN CHARACTER (Man) FOR THEM. " +
+        "DO NOT CONFUSE THE MAIN CHARACTER (man in first person) FOR THEM. " +
         "The term '악령 (aknyeong)' translates to 'Evil Spirit' !!!" +
         "!!! DRAFT: [[[[%s]]] !!!. " +
         "!!! CONTENT FOR CONTEXT so that you understand better: [[[%s]]] !!!"
