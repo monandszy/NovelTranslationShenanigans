@@ -65,7 +65,7 @@ class SomeTest {
         .filter(Files::isRegularFile)
         .map(e -> e.getFileName().toString().split("\\.")[0])
         .sorted()
-        .skip(419)
+        .skip(434)
 //        .limit(20)
         .forEach(this::translate);
 
@@ -74,7 +74,7 @@ class SomeTest {
 
   @Test
   void translateOne() {
-    translate("420");
+    translate("434");
   }
 
   @SneakyThrows
